@@ -10,7 +10,26 @@
         <img src="/img/gregflix.png" alt="GregFlix logo"/>
         <h1>A video on demand demo by Grégoire Duché</h1>
     </header>
+
+    <section class="users">
+        <div id="select-user"></div>
+    </section>
+
+    <section class="add-user hidden" id="user-form">
+            <form id="user-input">
+                <fieldset class="select-avatar">
+                    <label class="avatar-1"><input type="radio" name="avatar" value="avatar-1" /></label>
+                    <label class="avatar-2"><input type="radio" name="avatar" value="avatar-2" /></label>
+                    <label class="avatar-3"><input type="radio" name="avatar" value="avatar-3" /></label>
+                </fieldset>
+                <input type="text" placeholder="Name"/>
+                <input type="email" placeholder="Email address"/>
+                <button id="add-user">Add user</button>
+            </form>
+    </section>
 </section>
+
+
 
 </body>
 </html>
