@@ -33,6 +33,10 @@ export default class App {
         avatar.className = `avatar ${user.avatar}`;
         avatar.innerHTML = sanitize(user.name);
         usersContainer.appendChild(avatar);
+
+        avatar.onclick = () => {
+          this.runCatalog();
+        }
       });
     }, () => {
       // in this case, we don't care if this fails. We can add a new profile
@@ -67,6 +71,42 @@ export default class App {
     };
 
     usersContainer.appendChild(add);
+  }
+
+  runCatalog() {
+    let catalogTemplate = `
+    <section id="content" class="loaded catalog">
+        <header>
+            <div class="logo">
+                <img src="/img/gregflix.png" alt="GregFlix logo"/>
+            </div>
+            <div class="user" id="user-profile"></div>
+        </header>
+        <section id="promoted">
+            <video id="promoted-player" muted class="hidden"></video>
+            <div id="promoted-content-poster" style="background-image:url('/img/movieData/01/movie01.png'); "></div>
+            <div id="promoted-content">
+                <header>
+                    <h1>My example movie</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae imperdiet libero, semper rutrum mi. Suspendisse elementum odio ornare suscipit semper. Curabitur quis cursus purus. Etiam non ligula dignissim, lacinia tellus a, accumsan neque. Maecenas vel pretium metus. Suspendisse dapibus quam lacus, ac tincidunt est lobortis sit amet. Mauris feugiat, quam scelerisque volutpat pretium, ligula nisl bibendum metus, eu luctus est turpis eget massa. Nulla facilisi.</p>
+                </header>
+            </div>
+        </section>
+        <section id="watching-now"></section>
+        <section id="Sci Fi"></section>
+    </section>`;
+
+    this.container.innerHTML = catalogTemplate;
+
+    let player = videojs('promoted-player');
+    player.src({src: 'https://s3.amazonaws.com/_bc_dml/example-content/sintel_dash/sintel_vod.mpd', type: 'application/dash+xml'});
+    player.play();
+    player.on('timeupdate', () => {
+      if (player.currentTime() > 1) {
+        document.getElementById('promoted-player').classList.remove('hidden');
+        document.getElementById('promoted-content-poster').style.opacity = '0';
+      }
+    });
   }
 
   start () {
