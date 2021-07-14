@@ -1,4 +1,4 @@
-import {getUsers, saveUser} from "./Api";
+import {getMovies, getUsers, saveUser} from "./Api";
 import {sanitize} from "./Utils";
 
 export default class App {
@@ -77,36 +77,86 @@ export default class App {
     let catalogTemplate = `
     <section id="content" class="loaded catalog">
         <header>
-            <div class="logo">
+            <a class="logo" href="/">
                 <img src="/img/gregflix.png" alt="GregFlix logo"/>
-            </div>
+            </a>
             <div class="user" id="user-profile"></div>
         </header>
         <section id="promoted">
             <video id="promoted-player" muted class="hidden"></video>
-            <div id="promoted-content-poster" style="background-image:url('/img/movieData/01/movie01.png'); "></div>
+            <div id="promoted-content-poster""></div>
             <div id="promoted-content">
-                <header>
-                    <h1>My example movie</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae imperdiet libero, semper rutrum mi. Suspendisse elementum odio ornare suscipit semper. Curabitur quis cursus purus. Etiam non ligula dignissim, lacinia tellus a, accumsan neque. Maecenas vel pretium metus. Suspendisse dapibus quam lacus, ac tincidunt est lobortis sit amet. Mauris feugiat, quam scelerisque volutpat pretium, ligula nisl bibendum metus, eu luctus est turpis eget massa. Nulla facilisi.</p>
-                </header>
             </div>
         </section>
-        <section id="watching-now"></section>
-        <section id="Sci Fi"></section>
+        <section id="movies">
+            <h2>Movies</h2>
+            <div id="movie-list"></div>
+        </section>
+        <section id="tv-shows">
+            <h2>TV Shows</h2>
+        </section>
     </section>`;
 
     this.container.innerHTML = catalogTemplate;
 
-    let player = videojs('promoted-player');
-    player.src({src: 'https://s3.amazonaws.com/_bc_dml/example-content/sintel_dash/sintel_vod.mpd', type: 'application/dash+xml'});
-    player.play();
-    player.on('timeupdate', () => {
-      if (player.currentTime() > 1) {
-        document.getElementById('promoted-player').classList.remove('hidden');
-        document.getElementById('promoted-content-poster').style.opacity = '0';
+    getMovies().then((content) => {
+      let promoted = content.find((element) => element.promoted);
+      document.getElementById('promoted-content-poster').style['background-image'] = `url(${promoted.poster})`;
+      document.getElementById('promoted-content').innerHTML = `<header>
+                    <h1>${sanitize(promoted.title)}</h1>
+                    <p>${sanitize(promoted.description)}</p>
+                </header>`;
+      let player = videojs('promoted-player');
+      player.src({src: promoted.src, type: promoted.srcType});
+      player.play();
+      player.on('timeupdate', () => {
+        if (player.currentTime() > 1) {
+          document.getElementById('promoted-player').classList.remove('hidden');
+          document.getElementById('promoted-content-poster').style.opacity = '0';
+        }
+      });
+
+      let movies = content.filter((item) => item.type === 'movie');
+      let movieContainer = document.getElementById('movie-list');
+      for (let movie of movies) {
+        let template = `<div class="movie">
+                <img src="${movie.poster}" alt="" />
+                <h3>${sanitize(movie.title)}</h3>
+                <p>${sanitize(movie.description)}</p>
+            </div>`;
+        let div = document.createElement('div');
+        div.innerHTML = template;
+        div.onclick = () => {
+          this.runMovie(movie);
+        };
+        movieContainer.appendChild(div);
       }
+    }, () => {
+      // @todo display error messages
     });
+  }
+
+  runMovie(movie) {
+    let template = ` <section id="content" class="loaded playback">
+        <header>
+            <a class="logo" href="/">
+                <img src="/img/gregflix.png" alt="GregFlix logo"/>
+            </a>
+            <div class="user" id="user-profile"></div>
+        </header>
+        <section id="playback-content">
+            <video id="playback-player" muted class="hidden"></video>
+            </div>
+        </section>
+    </section>`;
+
+    this.container.innerHTML = template;
+    let player = videojs('playback-player', {
+      fill:true
+    });
+    player.src({src: movie.src, type: movie.srcType});
+    player.play();
+
   }
 
   start () {
