@@ -32,3 +32,6 @@ add.onclick = () => {
 usersContainer.appendChild(add);
 
 
+const app = document.getElementById('gregflix');
+const content = document.getElementById('content');
+content.classList.add('loaded');
