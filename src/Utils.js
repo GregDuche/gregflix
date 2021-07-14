@@ -3,4 +3,3 @@ export const sanitize = (text) => {
   div.innerHTML = text;
   return div.textContent;
 };
-

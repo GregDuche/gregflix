@@ -38,6 +38,20 @@ body {
     }
   }
 
+
+  .avatar-1 {
+    background: url('/img/avatar1.png');
+  }
+
+  .avatar-2 {
+    background: url('/img/avatar2.png');
+  }
+
+  .avatar-3 {
+    background: url('/img/avatar3.png');
+  }
+
+
   background: rgb(0, 0, 0);
   background: linear-gradient(10deg, rgba(0, 0, 0, 0) 0%, rgba(57, 4, 4, 0.7595413165266106) 14%, rgba(0, 0, 0, 1) 70%);
   color: white;
@@ -64,9 +78,7 @@ body {
       }
     }
 
-    .avatar-3 {
-      background-image: url('/img/avatar3.png');
-    }
+
 
     .add-profile {
       .user-icon;
@@ -74,6 +86,7 @@ body {
       border: solid 2px white;
       color: white;
       font-size: 50px;
+      float:right;
 
       &:hover {
         background: white;
@@ -149,17 +162,15 @@ body {
           }
         }
 
-        .avatar-1 {
-          background: url('/img/avatar1.png');
-        }
+      }
+    }
 
-        .avatar-2 {
-          background: url('/img/avatar2.png');
-        }
-
-        .avatar-3 {
-          background: url('/img/avatar3.png');
-        }
+    .error {
+      clear: both;
+      color: red;
+      font-size: 26px;
+      &.hidden {
+        display:none;
       }
     }
   }
