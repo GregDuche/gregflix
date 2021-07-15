@@ -35,6 +35,7 @@ export default class Catalog {
                     <button id="promo-watch-now">Watch now</button>
                 </header>`;
         this.loadPlayer(promoted);
+        this.bindWatchEvent(promoted);
       }
     }
   }
@@ -75,4 +76,13 @@ export default class Catalog {
       });
     }
   }
+
+  bindWatchEvent(movie) {
+    const watchNow = document.getElementById('promo-watch-now');
+    watchNow.onclick = () => {
+      movie.player = this.player;
+      this.app.runMovie(movie);
+    }
+  }
+
 }

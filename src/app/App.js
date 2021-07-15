@@ -45,12 +45,15 @@ export default class App {
    */
   runMovie(movie) {
     this.container.innerHTML = movieTemplate;
+
     let player = videojs('playback-player', {
       fill:true
     });
     player.src({src: movie.src, type: movie.srcType});
     player.play();
-
+    if (movie.player) {
+      player.currentTime(movie.player.currentTime());
+    }
   }
 
   start () {
