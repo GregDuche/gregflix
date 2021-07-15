@@ -30,7 +30,11 @@ module.exports = {
 
         ],
         exclude: /node_modules/
-      }
+      },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
+      },
     ]
   },
 

@@ -1,5 +1,6 @@
 import {getMovies, getUsers, saveUser} from "./Api";
 import {sanitize} from "./Utils";
+import catalogTemplate from './templates/catalog.html';
 
 export default class App {
 
@@ -74,29 +75,6 @@ export default class App {
   }
 
   runCatalog() {
-    let catalogTemplate = `
-    <section id="content" class="loaded catalog">
-        <header>
-            <a class="logo" href="/">
-                <img src="/img/gregflix.png" alt="GregFlix logo"/>
-            </a>
-            <div class="user" id="user-profile"></div>
-        </header>
-        <section id="promoted">
-            <video id="promoted-player" muted class="hidden"></video>
-            <div id="promoted-content-poster""></div>
-            <div id="promoted-content">
-            </div>
-        </section>
-        <section id="movies">
-            <h2>Movies</h2>
-            <div id="movie-list"></div>
-        </section>
-        <section id="tv-shows">
-            <h2>TV Shows</h2>
-        </section>
-    </section>`;
-
     this.container.innerHTML = catalogTemplate;
 
     getMovies().then((content) => {
