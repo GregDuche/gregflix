@@ -11,7 +11,7 @@ const movies = [
   {
     title: 'My example movie',
     poster: '/img/movieData/01/movie01.png',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae imperdiet libero, semper rutrum mi. Suspendisse elementum odio ornare suscipit semper. ',
+    description: 'This is the promo content. Wait a few seconds, it will start playing muted in the background. If you click watch now, it\'ll open the player and continue playing',
     promoted: true,
     src: 'https://s3.amazonaws.com/_bc_dml/example-content/sintel_dash/sintel_vod.mpd',
     srcType: 'application/dash+xml',

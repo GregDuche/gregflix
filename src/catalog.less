@@ -16,6 +16,23 @@
     width: 100%;
     height: @promoted-height;
 
+    #promo-watch-now {
+      border:solid 1px white;
+      background:none;
+      font-size:1.5em;
+      color: white;
+      padding:1em;
+      cursor:pointer;
+
+      &:hover {
+        &:after {
+          content: ' ►';
+          color:white;
+        }
+      }
+    }
+
+
     #promoted-content-poster {
       background-size: cover;
       height: @promoted-height;
