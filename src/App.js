@@ -1,6 +1,7 @@
 import {getMovies, getUsers, saveUser} from "./Api";
 import {sanitize} from "./Utils";
 import catalogTemplate from './templates/catalog.html';
+import movieTemplate from './templates/movie.html'
 
 export default class App {
 
@@ -74,6 +75,9 @@ export default class App {
     usersContainer.appendChild(add);
   }
 
+  /**
+   * Displays the catalog page
+   */
   runCatalog() {
     this.container.innerHTML = catalogTemplate;
 
@@ -114,21 +118,12 @@ export default class App {
     });
   }
 
+  /**
+   * Displays the selected movie
+   * @param movie
+   */
   runMovie(movie) {
-    let template = ` <section id="content" class="loaded playback">
-        <header>
-            <a class="logo" href="/">
-                <img src="/img/gregflix.png" alt="GregFlix logo"/>
-            </a>
-            <div class="user" id="user-profile"></div>
-        </header>
-        <section id="playback-content">
-            <video id="playback-player" muted class="hidden"></video>
-            </div>
-        </section>
-    </section>`;
-
-    this.container.innerHTML = template;
+    this.container.innerHTML = movieTemplate;
     let player = videojs('playback-player', {
       fill:true
     });
