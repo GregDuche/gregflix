@@ -29,6 +29,7 @@ export default class Users {
         this.usersContainer.appendChild(avatar);
 
         avatar.onclick = () => {
+          localStorage.setItem('gregflix-user', JSON.stringify(user));
           app.runCatalog();
         }
       });
@@ -73,6 +74,10 @@ export default class Users {
     };
 
     this.usersContainer.appendChild(add);
+  }
+
+  static logOut() {
+    localStorage.removeItem('gregflix-user');
   }
 
 }

@@ -1,11 +1,16 @@
 import catalogTemplate from "../templates/catalog.html";
 import {getMovies} from "../Api";
 import {sanitize} from "../Utils";
+import Users from "./Users";
 
 export default class Catalog {
   run(app) {
     this.app = app;
     app.container.innerHTML = catalogTemplate;
+
+    document.getElementById('link-to-home').onclick = () => {
+      Users.logOut();
+    };
 
     getMovies().then((content) => {
       this.showPromoted(content);

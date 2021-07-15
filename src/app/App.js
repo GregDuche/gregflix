@@ -1,8 +1,5 @@
-import {getMovies, getUsers, saveUser} from "../Api";
-import {sanitize} from "../Utils";
-import catalogTemplate from '../templates/catalog.html';
 import movieTemplate from '../templates/movie.html'
-import Users from "./Uers";
+import Users from "./Users";
 import Catalog from "./Catalog";
 
 export default class App {
@@ -59,6 +56,10 @@ export default class App {
   start () {
     const content = document.getElementById('content');
     content.classList.add('loaded');
-    this.runHomePage();
+    if (localStorage.getItem('gregflix-user')) {
+      this.runCatalog();
+    } else {
+      this.runHomePage();
+    }
   }
 }
