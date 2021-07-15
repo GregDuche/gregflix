@@ -106,9 +106,7 @@ export default class App {
                     <h1>${sanitize(promoted.title)}</h1>
                     <p>${sanitize(promoted.description)}</p>
                 </header>`;
-      let player = videojs('promoted-player', {
-        
-      });
+      let player = videojs('promoted-player');
       player.src({src: promoted.src, type: promoted.srcType});
       player.play();
       player.on('timeupdate', () => {
