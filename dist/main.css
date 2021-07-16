@@ -1,0 +1,324 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+body {
+  background: url(/img/bg.jpeg) black;
+  font-family: helvetica;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.avatar-1 {
+  background: url('/img/avatar1.png');
+}
+.avatar-2 {
+  background: url('/img/avatar2.png');
+}
+.avatar-3 {
+  background: url('/img/avatar3.png');
+}
+#gregflix {
+  background: #000000;
+  background: linear-gradient(10deg, rgba(0, 0, 0, 0) 0%, rgba(57, 4, 4, 0.75954132) 14%, #000000 70%);
+  color: white;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+#gregflix #content {
+  top: -100vh;
+  opacity: 0;
+  transition: top 3s ease-in, opacity 5s ease-in;
+}
+#gregflix #content.loaded {
+  top: auto;
+  opacity: 1;
+}
+#gregflix header.homepage {
+  padding-top: 10vh;
+}
+#gregflix .users {
+  max-width: 700px;
+  padding-top: 3em;
+  margin: 0 auto;
+  display: table;
+}
+#gregflix .users .avatar {
+  width: 79px;
+  height: 79px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  margin-right: 1em;
+  float: left;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  color: rgba(0, 0, 0, 0);
+  transition: padding-top 0.5s ease, color 1s ease;
+}
+#gregflix .users .avatar:hover {
+  padding-top: 100px;
+  color: white;
+}
+#gregflix .users .add-profile {
+  width: 79px;
+  height: 79px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  margin-right: 1em;
+  float: left;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background: none;
+  border: solid 2px white;
+  color: white;
+  font-size: 50px;
+  float: right;
+}
+#gregflix .users .add-profile:hover {
+  background: white;
+  color: black;
+  transition: background 0.5s ease;
+}
+#gregflix .add-user {
+  top: -2000px;
+  opacity: 0;
+  position: absolute;
+  max-width: 700px;
+  margin: 0 auto;
+}
+#gregflix .add-user.visible {
+  top: 0px;
+  opacity: 1;
+  transition: opacity 2s;
+  position: relative;
+}
+#gregflix .add-user form {
+  padding: 3em;
+  padding-bottom: 7em;
+  background: black;
+}
+#gregflix .add-user form input[type="text"],
+#gregflix .add-user form input[type="email"] {
+  padding: 15px 10px;
+}
+#gregflix .add-user form fieldset {
+  width: 100%;
+}
+#gregflix .add-user form input,
+#gregflix .add-user form button {
+  display: block;
+  margin-bottom: 1em;
+  width: 100%;
+  font-size: 30px;
+}
+#gregflix .add-user form button {
+  display: inline-block;
+  width: 200px;
+  float: right;
+  height: 2em;
+}
+#gregflix .add-user form .select-avatar {
+  border: none;
+}
+#gregflix .add-user form .select-avatar .avatar-1,
+#gregflix .add-user form .select-avatar .avatar-2,
+#gregflix .add-user form .select-avatar .avatar-3 {
+  width: 79px;
+  height: 79px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  margin-right: 1em;
+  float: left;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  display: inline-block;
+  float: none;
+}
+#gregflix .add-user form .select-avatar .avatar-1 input:checked:before,
+#gregflix .add-user form .select-avatar .avatar-2 input:checked:before,
+#gregflix .add-user form .select-avatar .avatar-3 input:checked:before {
+  border: solid 3px red;
+  width: 77px;
+  height: 75px;
+  content: "x";
+  color: rgba(0, 0, 0, 0);
+  position: absolute;
+  margin-top: -3px;
+  margin-left: -6px;
+}
+#gregflix .add-user .error {
+  clear: both;
+  color: red;
+  font-size: 26px;
+}
+#gregflix .add-user .error.hidden {
+  display: none;
+}
+#gregflix .about {
+  position: fixed;
+  bottom: 1em;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1.5em;
+  right: 1em;
+  font-size: 1em;
+}
+#gregflix .about h4 {
+  margin: 0;
+  padding: 0;
+  font-size: 2em;
+}
+#gregflix .about a {
+  color: white;
+  font-size: 19px;
+}
+@media (max-width: 1000px) {
+  #gregflix .about {
+    right: 0;
+    font-size: 2.5em;
+  }
+}
+#gregflix #gregflix {
+  background: black;
+}
+#gregflix .catalog .logo img {
+  width: 200px;
+  left: 1em;
+  position: absolute;
+  top: 1em;
+  z-index: 10000;
+}
+#gregflix .catalog #promoted {
+  background: white;
+  width: 100%;
+  height: 50vw;
+}
+#gregflix .catalog #promoted #promo-watch-now {
+  border: solid 1px white;
+  background: none;
+  font-size: 1.5em;
+  color: white;
+  padding: 1em;
+  cursor: pointer;
+}
+#gregflix .catalog #promoted #promo-watch-now:hover:after {
+  content: ' \25BA';
+  color: white;
+}
+#gregflix .catalog #promoted #promoted-content-poster {
+  background-size: cover;
+  height: 50vw;
+  opacity: 1;
+  transition: opacity 3s ease-in;
+  background-position: bottom left;
+}
+#gregflix .catalog #promoted #promoted-player {
+  position: absolute;
+  height: 50vw;
+}
+#gregflix .catalog #promoted #promoted-player {
+  position: absolute;
+}
+#gregflix .catalog #promoted #promoted-player,
+#gregflix .catalog #promoted video {
+  height: 50vw;
+  max-height: 50vw;
+}
+#gregflix .catalog #promoted #promoted-player.hidden {
+  display: none;
+}
+#gregflix .catalog #promoted #promoted-content {
+  z-index: 1000;
+  position: absolute;
+  text-align: left;
+  background-image: linear-gradient(12deg, #000000 32%, rgba(0, 0, 0, 0) 100%);
+  top: 0;
+  width: 100%;
+  height: 50vw;
+}
+#gregflix .catalog #promoted #promoted-content header {
+  bottom: 5em;
+  position: absolute;
+  padding-left: 6em;
+}
+#gregflix .catalog #promoted #promoted-content header h1 {
+  font-size: 2em;
+}
+#gregflix .catalog #promoted #promoted-content header p {
+  font-size: 1.8em;
+  max-width: 48%;
+  text-align: justify;
+}
+#gregflix .catalog #movies {
+  background: black;
+  min-height: 5vh;
+  padding-left: 6em;
+  text-align: left;
+}
+#gregflix .catalog #movies h2 {
+  padding-top: 1.5em;
+}
+#gregflix .catalog #movies .movie {
+  cursor: pointer;
+  height: 300px;
+  float: left;
+  position: relative;
+}
+#gregflix .catalog #movies .movie .movie-info {
+  position: absolute;
+  height: 100%;
+  bottom: 0px;
+  padding: 1em;
+  background: rgba(0, 0, 0, 0.3);
+  display: none;
+}
+#gregflix .catalog #movies .movie img {
+  height: 90%;
+  padding: 1em;
+  margin: 0 auto;
+}
+#gregflix .catalog #movies .movie:hover img {
+  padding: 0;
+  height: 96%;
+}
+#gregflix .catalog #movies .movie:hover .movie-info {
+  z-index: 10000;
+  display: block;
+}
+#gregflix .catalog #movies .movie:hover .movie-info h3 {
+  margin-top: 34%;
+}
+#gregflix .catalog #tv-shows {
+  background: black;
+  min-height: 5vh;
+  padding-left: 6em;
+  text-align: left;
+}
+#gregflix .catalog #tv-shows h2 {
+  padding-top: 1.5em;
+}
+#gregflix .playback {
+  width: 100%;
+  height: 100%;
+}
+#gregflix .playback .logo img {
+  width: 200px;
+  left: 1em;
+  position: absolute;
+  top: 1em;
+  z-index: 10000;
+}
+#gregflix .playback #playback-content {
+  width: 100%;
+}
+#gregflix .playback #playback-player,
+#gregflix .playback #playback-player video {
+  width: 100%;
+  height: 100vh;
+}
+

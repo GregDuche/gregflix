@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="/bundle.js"></script>
+    <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
+<link href="main.css" rel="stylesheet"></head>
+<body>
+
+<section id="gregflix">
+    <section id="content">
+        <header class="homepage">
+            <img src="/img/gregflix.png" alt="GregFlix logo"/>
+            <h1>A video on demand demo by Grégoire Duché</h1>
+        </header>
+
+        <section class="users">
+            <div id="select-user"></div>
+        </section>
+
+        <section class="add-user hidden" id="user-form">
+                <form id="user-input">
+                    <fieldset class="select-avatar">
+                        <label class="avatar-1"><input type="radio" name="avatar" value="avatar-1" /></label>
+                        <label class="avatar-2"><input type="radio" name="avatar" value="avatar-2" /></label>
+                        <label class="avatar-3"><input type="radio" name="avatar" value="avatar-3" /></label>
+                    </fieldset>
+                    <input type="text" placeholder="Name" name="name"/>
+                    <input type="email" placeholder="Email address" name="email"/>
+                    <button id="add-user">Add user</button>
+                    <div class="error hidden" id="form-error">Oops ! That didn't work.. Do you mind trying that again?</div>
+                </form>
+        </section>
+    </section>
+    <section class="about">
+        <h4>What's this?</h4>
+        <p>Gregflix is a showcase of my front end skills. This is a from scratch application made using only Javascript and CSS.</p>
+        <p>This version has been built in <em>7 hours 35 minutes</em></p>
+        <!--a href="/about.html">Wanna know more?</a-->
+    </section>
+</section>
+
+<script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
+<script src="https://cdn.dashjs.org/latest/dash.all.debug.js"></script>
+<script src="https://unpkg.com/videojs-contrib-dash@5.0.0/dist/videojs-dash.js"></script>
+
+<script type="text/javascript" src="static/js/bundle.js"></script></body>
+</html>
+
