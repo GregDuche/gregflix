@@ -50,8 +50,10 @@ export default class Catalog {
     for (let movie of content.filter((item) => item.type === 'movie')) {
       let template = `<div class="movie">
                 <img src="${movie.poster}" alt="" />
-                <h3>${sanitize(movie.title)}</h3>
-                <p>${sanitize(movie.description)}</p>
+                <div class="movie-info">
+                    <h3>${sanitize(movie.title)}</h3>
+                    <p>${sanitize(movie.description)}</p>
+                  </div>
             </div>`;
       let div = document.createElement('div');
       div.innerHTML = template;

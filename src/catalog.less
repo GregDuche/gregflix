@@ -1,4 +1,7 @@
 @promoted-height: 50vw;
+#gregflix {
+  background:black;
+}
 .catalog {
   .logo {
     img {
@@ -100,21 +103,42 @@
 
   #movies {
     .section;
-    height: 400px;
 
     .movie {
       cursor: pointer;
-      width: 700px;
+      height: 300px;
       float: left;
+      position:relative;
 
-      img {
-        height: 150px;
-        float: left;
-        margin-right: 30px;
+      .movie-info {
+        position:absolute;
+        height:100%;
+        bottom:0px;
+        padding:1em;
+        background:rgba(0,0,0,0.3);
+        display:none;
       }
 
-      p {
-        margin-right: 30px;
+      img {
+        height:90%;
+        padding:1em;
+        margin: 0 auto;
+      }
+
+      &:hover {
+        img {
+          padding: 0;
+          height: 96%;
+        }
+
+        .movie-info {
+          z-index:10000;
+          display:block;
+
+          h3 {
+            margin-top:34%;
+          }
+        }
       }
     }
   }
